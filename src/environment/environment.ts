@@ -1,4 +1,5 @@
 export const environment = {
-  production: false,
-  googleMapsApiKey: 'AIzaSyA3VDI1-YmDAH5SSJK6cGhnJQbfd0waD3w'
+  production: true,
+  googleMapsApiKey: 'AIzaSyA3VDI1-YmDAH5SSJK6cGhnJQbfd0waD3w',
+  apiUrl: 'https://easydatasoftvisitback.onrender.com/api'
 };
