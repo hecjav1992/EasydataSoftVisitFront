@@ -1,0 +1,138 @@
+﻿<div class="container-fluid min-vh-100 bg-white">
+  <div class="col-12 col-md-12">
+  <div class="row">
+    <div class="col-12 col-md-12 bg-white">
+      <!-- Encabezado -->
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Seguimiento de Vendedores</h1>
+        <a href="#" class="btn btn-sm btn-primary shadow-sm">
+          <i class="fas fa-download fa-sm text-white-50"></i> Generar Reporte
+        </a>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row m-5">
+    <div class="col-3 col-md-3">
+      <div class="card border-primary bg-primary rounded-3 h-100 border text-white shadow">
+        <div class="card-body d-flex align-items-center p-2">
+          <div class="me-3">
+            <i class="bi bi-currency-dollar fs-3"></i>
+          </div>
+          <div>
+            <h6 class="mb-1">Ventas Totales</h6>
+            <h5 class="mb-0">$12,500</h5>
+            <small class="text-white-50">75 transacciones</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 col-md-3">
+      <div class="card border-success bg-success rounded-3 h-100 border text-white shadow">
+        <div class="card-body d-flex align-items-center p-2">
+          <div class="me-3">
+            <i class="bi bi-check-circle fs-3"></i>
+          </div>
+          <div>
+            <h6 class="mb-1">Ventas Exitosas</h6>
+            <h5 class="mb-0">68</h5>
+            <small class="text-white-50">90% completadas</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 col-md-3">
+      <div class="card border-warning bg-warning text-dark rounded-3 h-100 border shadow">
+        <div class="card-body d-flex align-items-center p-2">
+          <div class="me-3">
+            <i class="bi bi-hourglass-split fs-3"></i>
+          </div>
+          <div>
+            <h6 class="mb-1">Pendientes</h6>
+            <h5 class="mb-0">5</h5>
+            <small>En revisión</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 col-md-3">
+      <div class="card border-danger bg-danger rounded-3 h-100 border text-white shadow">
+        <div class="card-body d-flex align-items-center p-2">
+          <div class="me-3">
+            <i class="bi bi-x-circle fs-3"></i>
+          </div>
+          <div>
+            <h6 class="mb-1">Cancelaciones</h6>
+            <h5 class="mb-0">2</h5>
+            <small class="text-white-50">Este mes</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-5 col-md-5 d-block m-1">
+      <google-map [center]="center" [zoom]="zoom" height="500px" width="100%">
+        @for (position of markerPositions; track position) {
+        <map-marker [position]="position"
+                    #marker="mapMarker"
+                    (mapClick)="openInfoWindow(marker, position)" />
+        }
+        <map-info-window>
+          {{ infoContent }}
+        </map-info-window>
+      </google-map>
+    </div>
+    <div class="col-1 col-md-1 m-1"></div>
+    <div class="col-md-5 col-md-5 m-1">
+      <div class="card shadow">
+        <div class="card-header">
+          <h4>Top de Visitas</h4>
+        </div>
+        <div class="card-body">
+          <table class="table-striped table-hover table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Visitas Realizadas</th>
+                <th>Lugar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana Rodríguez</td>
+                <td>15</td>
+                <td>Ciudad de Panamá</td>
+              </tr>
+              <tr>
+                <td>Luis Gómez</td>
+                <td>12</td>
+                <td>Panamá Oeste</td>
+              </tr>
+              <tr>
+                <td>Marta Jiménez</td>
+                <td>10</td>
+                <td>Chiriquí</td>
+              </tr>
+              <tr>
+                <td>Carlos Herrera</td>
+                <td>8</td>
+                <td>Colón</td>
+              </tr>
+              <tr>
+                <td>Pedro Castillo</td>
+                <td>9</td>
+                <td>Veraguas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  </div>
+
+

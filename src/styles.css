@@ -1,0 +1,21 @@
+
+/* Eliminar márgenes y paddings globales */
+/* Eliminar márgenes, padding y asegurar que ocupe toda la pantalla */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html > body{
+  background-image: url('../src/img/5073414.jpg');
+  background-size: cover
+}
+
+/* Asegurar que app-root ocupe toda la pantalla */
+app-root {
+  display: block;
+}
+
+
+
