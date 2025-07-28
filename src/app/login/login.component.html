@@ -1,0 +1,66 @@
+<div>
+  cambio
+  <div>
+    <ul style="display:none">
+      <li *ngFor="let item of items">
+        {{ item.id }} - {{ item.nombre }}
+      </li>
+    </ul>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+          <div class="card o-hidden border-0 shadow-lg">
+            <div class="card-body p-0">
+              <div class="row">
+                <div class=" d-flex justify-content-center align-items-center col-lg-6">
+                  <img src="https://s1.elespanol.com/2015/10/12/elandroidelibre/el_androide_libre_71003130_179986202_1024x576.jpg" alt="Logo" class="img-fluid mb-3" />
+                </div>
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <div class="text-center">
+                      <h1 class="h4 mb-4 text-gray-900">Registro Visitas</h1>
+                    </div>
+                    <form (ngSubmit)="login()">
+                      <label>Usuario:</label>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">
+                          <i class="bi bi-person-circle"></i>
+                        </span>
+                        <input [(ngModel)]="usuario" name="usuario"  class="form-control" placeholder="Usuario" required>
+                      </div>
+                      <label>Contraseña:</label>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">
+                          <i class="bi bi-lock-fill"></i>
+                        </span>
+                        <input [(ngModel)]="password" name="password" class="form-control" type="password" placeholder="Contraseña" required>
+                      </div>
+                      <br />
+                      <button type="submit" class="btn btn-success form-control">Iniciar sesión</button>
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                      <a class="small" href="mailto:easydata10@gmail.com">Olvidaste tu contraseña ?</a>
+                    </div>
+                    <div class="text-center">
+                      <a class="small" href="">Crear cliente!</a>
+                    </div>
+                    <br />
+                    <div class="text-muted">
+                      <b>Version 2.0</b>
+                      <br />
+                      <b>&copy;  Easy Data</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
