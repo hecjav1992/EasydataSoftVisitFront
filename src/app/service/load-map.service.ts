@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoadMapService {
-  private apiUrl = 'https://localhost:7071/api/Distance?origins=8.756958,-79.865128&destinations=9.3599,-79.9014&departure_time=now&mode=driving';;
+  private apiUrl = 'https://easydatasoftvisitback.onrender.com/api/Distance?origins=8.756958,-79.865128&destinations=9.3599,-79.9014&departure_time=now&mode=driving';;
   
   constructor(private http: HttpClient) { }
   getItems2(): Observable<any[]> {
