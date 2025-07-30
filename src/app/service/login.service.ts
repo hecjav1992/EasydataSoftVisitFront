@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ItemService {
   private apiUrl = 'https://easydatasoftvisitback.onrender.com/api/loging';
+  private apiurl2 = 'https://easydatasoftvisitback.onrender.com/api/Loging/login';
 
   constructor(private http: HttpClient) { }
   getItems(): Observable<any[]> {
@@ -14,7 +15,7 @@ export class ItemService {
   }
 
   login(usuario: string, password: string): Observable<any> {
-    return this.http.post<any>('https://easydatasoftvisitback.onrender.com/api/Loging/login', {
+    return this.http.post<any>(this.apiurl2, {
       username: usuario,
       password: password
     });
