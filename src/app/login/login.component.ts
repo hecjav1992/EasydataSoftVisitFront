@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../service/login.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -13,7 +13,8 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   usuario: string = '';
   password: string = '';
-  items: any[]=[] ;
+  items: any[] = [];
+
   constructor(
     private itemService: ItemService,
     private router: Router,
@@ -32,7 +33,8 @@ export class LoginComponent implements OnInit {
           console.log('Login exitoso, token:', res.token);
           this.router.navigate(['panel']);
         }
-        if (res.success && res.token=="123abd" ){
+        if (res.success && res.token == "123abd") {
+          localStorage.setItem('user', res.token);
           this.router.navigate(['App']);
         }
         else {
