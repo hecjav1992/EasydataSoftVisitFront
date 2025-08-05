@@ -18,7 +18,10 @@ export class ItemService {
     return this.http.post<any>(this.apiurl2, {
       username: usuario,
       password: password
+    }, {
+      withCredentials: true
     });
   }
+
   
 }
