@@ -16,8 +16,8 @@ export class ItemService {
 
   login(usuario: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiurl2, {
-      username: usuario,
-      password: password
+      usuario: usuario,
+      contrasena: password
     }, {
       withCredentials: true
     });
