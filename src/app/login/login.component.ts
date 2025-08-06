@@ -29,12 +29,11 @@ export class LoginComponent implements OnInit {
   login() {
     this.itemService.login(this.usuario, this.password).subscribe({
       next: (res) => {
-        if (res.success) {
-          console.log('Login exitoso, token:', res.token);
+        if (res.success && res.message == "admin") {
           this.router.navigate(['panel']);
         }
-        if (res.success && res.token == "123abd") {
-          localStorage.setItem('user', res.token);
+        else if (res.success && res.message == "vendedor") {
+          localStorage.setItem('user', res.message);
           this.router.navigate(['App']);
         }
         else {
