@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ItemService {
-  private apiUrl = 'https://easydatasoftvisitback.onrender.com/api/loging';
+  private apiUrl = 'https://easydatasoftvisitback.onrender.com/api/Loging/productos';
   private apiurl2 = 'https://easydatasoftvisitback.onrender.com/api/Loging/login';
 
   constructor(private http: HttpClient) { }
