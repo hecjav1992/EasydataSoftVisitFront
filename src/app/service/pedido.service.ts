@@ -1,25 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { parse } from 'parse5';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PedidoService {
   private apiUrl = 'https://easydatasoftvisitback.onrender.com/api/Pedidos/';
+
   constructor(private http: HttpClient) { }
 
-  EnviarPedido(usuario: String, cantidad: any, direccion: String, telefono: String, comentario: String,
-    latitud: any, longitud: any, observaciones:String): Observable<any> {
+  EnviarPedido(
+    usuario: string,
+    cantidad: number,
+    direccion: string,
+    telefono: string,
+    latitud: number,
+    longitud: number,
+    observaciones: string
+  ): Observable<any> {
     return this.http.post<any>(this.apiUrl, {
       usuario: usuario,
-      cantidad: parseInt(cantidad),
+      cantidad: cantidad,
       direccion: direccion,
-      longitud: longitud,
+      telefono: telefono,
       latitud: latitud,
-      observaciones: observaciones
-
+      longitud: longitud,
+      observaciones: observaciones,
+      fecha_pedido: new Date().toISOString(),
+      estado: "pendiente",
+      total: 0
     }, {
       withCredentials: true
     });

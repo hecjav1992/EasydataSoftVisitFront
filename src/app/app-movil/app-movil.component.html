@@ -19,7 +19,7 @@
         <form (ngSubmit)="enviar()" id="pedidoForm">
           <div class="mb-3">
             <label for="usuario" class="form-label">Usuario:</label>
-            <input [(ngModel)]="usuario" type="text" class="form-control" id="usuario" name="usuario" value="{{mensaje}}" readonly>
+            <input type="text" class="form-control" id="usuario" name="usuario" value="{{mensaje}}" readonly>
           </div>
 
           <div class="mb-3">
@@ -52,7 +52,7 @@
 
           <div class="mb-3">
             <label for="comentarios" class="form-label">Comentarios:</label>
-            <textarea [(ngModel)]="comentario" type="text" class="form-control" id="comentarios" name="comentarios"></textarea>
+            <textarea [(ngModel)]="observaciones" type="text" class="form-control" id="comentarios" name="comentarios"></textarea>
           </div>
 
           <div class="d-grid d-md-flex justify-content-md-between gap-2">

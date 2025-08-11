@@ -12,60 +12,65 @@ import { PedidoService } from '../service/pedido.service';
   styleUrl: './app-movil.component.css'
 })
 export class AppMovilComponent implements OnInit {
-  public fecha?: String;
+  public fecha?: string;
   public mensaje: string = '';
   public item: any[] = [];
   options: any[] = [];
-  public usuario: String = '';
-  public cantidad: String="";
-  public direccion: String="";
-  public telefono: String="";
-  public comentario: String = "";
-  public latitud: any = null;
-  public longitud: any = null;
+  public cantidad: number = 0;
+  public direccion: string = "";
+  public telefono: string = "";
+  public observaciones: string = "";
+  public latitud: number | null = null;
+  public longitud: number | null = null;
 
+  constructor(
+    private router: Router,
+    private itemservice: ItemService,
+    private pedidoservice: PedidoService
+  ) { }
 
-
-
-  constructor(private router: Router, private itemservice: ItemService, private pedidoservice: PedidoService) { }
-  ngOnInit(): void
-  {
+  ngOnInit(): void {
     this.itemservice.getItems().subscribe(Response => {
       this.options = Response;
     });
     this.mensaje = localStorage.getItem('user') ?? '';
     this.fecha = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en-US');
-   
+    console.log(this.mensaje);
   }
+
   enviar() {
     if ("geolocation" in navigator) {
-      navigator.geolocation.watchPosition(
+      navigator.geolocation.getCurrentPosition(
         (position) => {
-          console.log("Lat:", position.coords.latitude, "Lng:", position.coords.longitude);
+          this.latitud = position.coords.latitude;
+          this.longitud = position.coords.longitude;
+
+          this.pedidoservice.EnviarPedido(
+            this.mensaje,
+            this.cantidad,
+            this.direccion,
+            this.telefono,
+            this.latitud,
+            this.longitud,
+            this.observaciones
+          ).subscribe({
+            next: res => {
+              Swal.fire("Pedido enviado", "Tu pedido se guardó correctamente", "success");
+            },
+            error: err => {
+              console.error('Error en backend:', err);
+              Swal.fire("Error", err.error?.message || "Error desconocido", "error");
+            }
+          });
+        },
+        (error) => {
+          Swal.fire("Error", "No se pudo obtener la ubicación.", "error");
         }
       );
+    } else {
+      Swal.fire("Error", "Geolocalización no soportada en este navegador.", "error");
     }
-    else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Geolocalización no soportada en este navegador.",
-      });
-     
-    }
-    this.pedidoservice.EnviarPedido(this.usuario, this.cantidad, this.direccion, this.telefono,
-      this.comentario, this.latitud, this.longitud,this.comentario).subscribe({
-        next: (res) => {
-          Swal.fire({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success"
-          });
+  }
 
-        }
-    });
-   }
-      
-  
   selectedValue: string = '';
 }
