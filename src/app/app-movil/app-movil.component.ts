@@ -48,7 +48,7 @@ export class AppMovilComponent implements OnInit {
           this.pedidoservice.EnviarPedido(this.mensaje,this.cantidad,this.direccion,
             this.telefono,this.latitud,this.longitud,this.observaciones).subscribe({
             next: res => {
-              Swal.fire("Pedido enviado", "Tu pedido se guardó correctamente", "success");
+                Swal.fire("Pedido enviado", "Tu pedido se guardó correctamente", "success");
             },
           });
         },
