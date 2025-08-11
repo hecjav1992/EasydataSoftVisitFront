@@ -54,7 +54,7 @@ export class AppMovilComponent implements OnInit {
      
     }
     this.pedidoservice.EnviarPedido(this.usuario, this.cantidad, this.direccion, this.telefono,
-      this.comentario, this.latitud, this.longitud).subscribe({
+      this.comentario, this.latitud, this.longitud,this.comentario).subscribe({
         next: (res) => {
           Swal.fire({
             title: "Good job!",
