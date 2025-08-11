@@ -3,7 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "types": [ "google.maps" ],
+    "types": [ "google.maps", "mocha" ],
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
