@@ -45,22 +45,11 @@ export class AppMovilComponent implements OnInit {
           this.latitud = position.coords.latitude;
           this.longitud = position.coords.longitude;
 
-          this.pedidoservice.EnviarPedido(
-            this.mensaje,
-            this.cantidad,
-            this.direccion,
-            this.telefono,
-            this.latitud,
-            this.longitud,
-            this.observaciones
-          ).subscribe({
+          this.pedidoservice.EnviarPedido(this.mensaje,this.cantidad,this.direccion,
+            this.telefono,this.latitud,this.longitud,this.observaciones).subscribe({
             next: res => {
               Swal.fire("Pedido enviado", "Tu pedido se guardó correctamente", "success");
             },
-            error: err => {
-              console.error('Error en backend:', err);
-              Swal.fire("Error", err.error?.message || "Error desconocido", "error");
-            }
           });
         },
         (error) => {

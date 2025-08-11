@@ -10,15 +10,8 @@ export class PedidoService {
 
   constructor(private http: HttpClient) { }
 
-  EnviarPedido(
-    usuario: string,
-    cantidad: number,
-    direccion: string,
-    telefono: string,
-    latitud: number,
-    longitud: number,
-    observaciones: string
-  ): Observable<any> {
+  EnviarPedido(usuario: string,cantidad: number,direccion: string,telefono: string,
+    latitud: number,longitud: number,observaciones: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, {
       usuario: usuario,
       cantidad: cantidad,
