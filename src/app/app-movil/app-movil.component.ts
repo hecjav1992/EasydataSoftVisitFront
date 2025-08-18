@@ -44,7 +44,6 @@ export class AppMovilComponent implements OnInit {
         (position) => {
           this.latitud = position.coords.latitude;
           this.longitud = position.coords.longitude;
-
           this.pedidoservice.EnviarPedido(this.mensaje,this.cantidad,this.direccion,
             this.telefono,this.latitud,this.longitud,this.observaciones).subscribe({
             next: res => {
