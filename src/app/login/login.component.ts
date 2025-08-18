@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../service/login.service';
 import { NavigationExtras, Router } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
+import { Modal } from 'bootstrap';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,13 +21,24 @@ export class LoginComponent implements OnInit {
     private router: Router,
   ) { }
 
-
+  ejecutarTarea(): void {
+    const modalElement = document.getElementById('loadingModal');
+    if (!modalElement) {
+      return;
+    }
+    const modal = Modal.getOrCreateInstance(modalElement);
+    modal.show();
+    setTimeout(() => {
+      modal.hide();
+    }, 3000);
+  }
   ngOnInit(): void {
     this.itemService.getItems().subscribe(Response => {
       this.items = Response;
     });  
   }
   login() {
+    this.ejecutarTarea();
     this.itemService.login(this.usuario, this.password).subscribe({
       next: (res) => {
         if (res.success && res.message == "admin") {
@@ -54,4 +66,5 @@ export class LoginComponent implements OnInit {
     });
 
   }
+  
 }

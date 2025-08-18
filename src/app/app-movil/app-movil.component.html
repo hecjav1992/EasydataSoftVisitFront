@@ -29,7 +29,7 @@
 
           <div class="mb-3">
             <label for="producto" class="form-label">Producto:</label>
-            <select  name="productos" [(ngModel)]="selectedValue" class="form-select">
+            <select name="productos" [(ngModel)]="selectedValue" class="form-select">
               <option value="">Select an option</option>
               <option *ngFor="let item of options" [value]="item.nombre">{{item.nombre}}</option>
             </select>
@@ -57,7 +57,7 @@
 
           <div class="d-grid d-md-flex justify-content-md-between gap-2">
             <button type="submit" class="btn btn-primary">Enviar Pedido</button>
-            <button type="submit" class="btn btn-success">Consultar Pedido</button>
+            <button type="button"class="btn btn-success">Consultar Pedido</button>
             <button type="button" class="btn btn-danger" id="cancelarBtn">Cancelar Pedido</button>
           </div>
         </form>
