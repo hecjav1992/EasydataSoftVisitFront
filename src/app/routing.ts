@@ -7,8 +7,6 @@ import { DashboardComponentComponent } from './dashboard-component/dashboard-com
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
-  { path: '/', component: LoginComponent },
-  { path: '*', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'App', component: AppMovilComponent },
   {
@@ -18,7 +16,9 @@ const appRoutes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponentComponent },
     ]
-  }
+
+  },
+  { path: '**', component: LoginComponent },
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

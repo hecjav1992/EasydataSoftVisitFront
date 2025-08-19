@@ -17,7 +17,7 @@ export class AppMovilComponent implements OnInit {
   public mensaje: string = '';
   public item: any[] = [];
   options: any[] = [];
-  public cantidad: number = 0;
+  public cantidad: number=0;
   public direccion: string = "";
   public telefono: string = "";
   public observaciones: string = "";
@@ -60,7 +60,10 @@ export class AppMovilComponent implements OnInit {
               this.selectedValue = '';
               this.cantidad = 0;
               this.direccion = '';
-
+              this.telefono = '';
+              this.latitud = null;
+              this.longitud = null;
+              this.observaciones = '';
             },
           });
         },
