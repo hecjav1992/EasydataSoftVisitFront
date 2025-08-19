@@ -37,27 +37,42 @@ export class AppMovilComponent implements OnInit {
     this.fecha = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en-US');
     console.log(this.mensaje);
   }
-
   enviar() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          this.latitud = position.coords.latitude;
-          this.longitud = position.coords.longitude;
-          this.pedidoservice.EnviarPedido(this.mensaje,this.cantidad,this.direccion,
-            this.telefono,this.latitud,this.longitud,this.observaciones).subscribe({
-            next: res => {
-                Swal.fire("Pedido enviado", "Tu pedido se guardó correctamente", "success");
-            },
-          });
-        },
-        (error) => {
-          Swal.fire("Error", "No se pudo obtener la ubicación.", "error");
-        }
-      );
-    } else {
-      Swal.fire("Error", "Geolocalización no soportada en este navegador.", "error");
+    if (this.validation()) {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            this.latitud = position.coords.latitude;
+            this.longitud = position.coords.longitude;
+            this.pedidoservice.EnviarPedido(this.mensaje, this.cantidad, this.direccion,
+              this.telefono, this.latitud, this.longitud, this.observaciones).subscribe({
+                next: res => {
+                  Swal.fire("Pedido enviado", "Tu pedido se guardó correctamente", "success");
+                this.cantidad = 0;
+                this.direccion= "";
+                this.telefono = "";
+                this.observaciones= "";
+                this.latitud = null;
+                this.longitud= null;
+                },
+              });
+          },
+          (error) => {
+            Swal.fire("Error", "No se pudo obtener la ubicación.", "error");
+          }
+        );
+      } else {
+        Swal.fire("Error", "Geolocalización no soportada en este navegador.", "error");
+      }
     }
+  }
+  validation(): boolean {
+    const form = document.querySelector<HTMLFormElement>('#pedidoForm');
+    if (form && !form.checkValidity()) {
+      form.classList.add('was-validated');
+      return false; 
+    }
+    return true; 
   }
 
   selectedValue: string = '';
