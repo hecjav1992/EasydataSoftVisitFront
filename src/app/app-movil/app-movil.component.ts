@@ -55,9 +55,12 @@ export class AppMovilComponent implements OnInit {
               Swal.fire("Pedido enviado", "Tu pedido se guardó correctamente", "success");
               const form = document.querySelector<HTMLFormElement>('#pedidoForm');
               if (form) {
-                form.reset();
                 form.classList.remove('was-validated');
               }
+              this.selectedValue = '';
+              this.cantidad = 0;
+              this.direccion = '';
+
             },
           });
         },

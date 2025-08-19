@@ -7,6 +7,8 @@ import { DashboardComponentComponent } from './dashboard-component/dashboard-com
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
+  { path: '/', component: LoginComponent },
+  { path: '*', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'App', component: AppMovilComponent },
   {
