@@ -40,12 +40,15 @@ export class AppMovilComponent implements OnInit {
   }
   enviar() {
     if (!this.validation()) return;
+
     const modal = this.ejecutarTarea();
+
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           this.latitud = position.coords.latitude;
           this.longitud = position.coords.longitude;
+
           this.pedidoservice.EnviarPedido(
             this.mensaje, this.cantidad, this.direccion,
             this.telefono, this.latitud, this.longitud, this.observaciones
@@ -84,6 +87,7 @@ export class AppMovilComponent implements OnInit {
   ejecutarTarea(): Modal | null {
     const modalElement = document.getElementById('loadingModal');
     if (!modalElement) return null;
+
     const modal = Modal.getOrCreateInstance(modalElement);
     modal.show();
     return modal; 
