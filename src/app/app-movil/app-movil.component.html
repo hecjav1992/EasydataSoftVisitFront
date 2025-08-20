@@ -1,4 +1,4 @@
-﻿<div class="row justify-content-center">
+<div class="row justify-content-center">
   <div class="card bg-body-tertiary rounded shadow">
     <!-- Cabecera con logo y usuario -->
     <div class="row g-0 align-items-center p-3">
@@ -29,10 +29,10 @@
 
         <div class="mb-3">
           <label for="producto" class="form-label">Producto:</label>
-          <select name="productos" [(ngModel)]="selectedValue" class="form-select">
+          <datalist name="productos" [(ngModel)]="selectedValue" class="form-select">
             <option value="">Select an option</option>
             <option *ngFor="let item of options" [value]="item.nombre">{{item.nombre}}</option>
-          </select>
+          </datalist>
         </div>
 
         <div class="mb-3">
@@ -55,9 +55,9 @@
         </div>
 
         <div class="d-grid d-md-flex justify-content-md-between gap-2">
-          <button type="submit" class="btn btn-primary">Enviar Pedido</button>
-          <button type="button" class="btn btn-success" (click)=verificarPedidos()>Consultar Pedido</button>
-          <button type="button" class="btn btn-danger" id="cancelarBtn">Cancelar Pedido</button>
+          <button type="submit" class="btn btn-success">Enviar Pedido</button>
+          <button type="button" class="btn btn-primary" (click)=verificarPedidos()>Consultar Pedido</button>
+          <button type="button" class="btn btn-danger" id="cancelarBtn">Salir</button>
         </div>
       </form>
     </div>
