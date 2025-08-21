@@ -30,9 +30,9 @@
         <div class="mb-3">
           <label for="producto" class="form-label">Producto:</label>
       
-            <input type="text" class="form-control" (blur)="validarProducto()"  matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let item of filteredOptions | async" [value]="item.nombre">
+            <input type="text" class="form-control" (blur)="validarProducto()"  matInput [formControl]="myControl" [matAutocomplete]="auto" required>
+            <mat-autocomplete id="matAutocomplete" #auto="matAutocomplete">
+              <mat-option id="mat" *ngFor="let item of filteredOptions | async" [value]="item.nombre">
                 {{item.nombre}}
               </mat-option>
             </mat-autocomplete>
