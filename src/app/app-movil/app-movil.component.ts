@@ -5,7 +5,9 @@ import { ItemService } from '../service/login.service';
 import Swal from 'sweetalert2';
 import { PedidoService } from '../service/pedido.service';
 import { Modal } from 'bootstrap';
-
+import { FormControl } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-app-movil',
   standalone: false,
@@ -23,6 +25,10 @@ export class AppMovilComponent implements OnInit {
   public observaciones: string = "";
   public latitud: number | null = null;
   public longitud: number | null = null;
+  myControl = new FormControl();
+  public filteredOptions: Observable<any[]> | undefined;
+
+
 
   constructor(
     private router: Router,
@@ -33,6 +39,12 @@ export class AppMovilComponent implements OnInit {
   ngOnInit(): void {
     this.itemservice.getItems().subscribe(Response => {
       this.options = Response;
+      this.filteredOptions = this.myControl.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        );
+
     });
     this.mensaje = localStorage.getItem('user') ?? '';
     this.fecha = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en-US');
@@ -103,6 +115,14 @@ export class AppMovilComponent implements OnInit {
     return modal;
   }
 
+  validarProducto() {
+    console.log("sgd")
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.nombre.toLowerCase().includes(filterValue));
+  }
 
   selectedValue: string = '';
 }

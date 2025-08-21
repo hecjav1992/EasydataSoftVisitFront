@@ -18,6 +18,7 @@
     <PackageJsonDependenciesAngularCore Condition="$(PackageJsonDependenciesAngularCore) == ''">^19.0.0</PackageJsonDependenciesAngularCore>
     <PackageJsonDependenciesAngularForms Condition="$(PackageJsonDependenciesAngularForms) == ''">^19.0.0</PackageJsonDependenciesAngularForms>
     <PackageJsonDependenciesAngularGoogleMaps Condition="$(PackageJsonDependenciesAngularGoogleMaps) == ''">^19.2.19</PackageJsonDependenciesAngularGoogleMaps>
+    <PackageJsonDependenciesAngularMaterial Condition="$(PackageJsonDependenciesAngularMaterial) == ''">^19.2.19</PackageJsonDependenciesAngularMaterial>
     <PackageJsonDependenciesAngularPlatformBrowser Condition="$(PackageJsonDependenciesAngularPlatformBrowser) == ''">^19.0.0</PackageJsonDependenciesAngularPlatformBrowser>
     <PackageJsonDependenciesAngularPlatformBrowserDynamic Condition="$(PackageJsonDependenciesAngularPlatformBrowserDynamic) == ''">^19.0.0</PackageJsonDependenciesAngularPlatformBrowserDynamic>
     <PackageJsonDependenciesAngularRouter Condition="$(PackageJsonDependenciesAngularRouter) == ''">^19.2.14</PackageJsonDependenciesAngularRouter>

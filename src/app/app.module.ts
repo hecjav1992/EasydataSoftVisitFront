@@ -5,13 +5,14 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { routing } from '../app/routing';
 import { DashboardComponentComponent } from './dashboard-component/dashboard-component.component';
 import { AppMovilComponent } from './app-movil/app-movil.component';
-
-
+import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,13 @@ import { AppMovilComponent } from './app-movil/app-movil.component';
     routing,
     GoogleMapsModule,
     GoogleMap,
-    MapMarker
+    MapMarker,
+    MatAutocomplete,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

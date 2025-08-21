@@ -29,10 +29,14 @@
 
         <div class="mb-3">
           <label for="producto" class="form-label">Producto:</label>
-          <datalist name="productos" [(ngModel)]="selectedValue" class="form-select">
-            <option value="">Select an option</option>
-            <option *ngFor="let item of options" [value]="item.nombre">{{item.nombre}}</option>
-          </datalist>
+      
+            <input type="text" class="form-control" (blur)="validarProducto()"  matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let item of filteredOptions | async" [value]="item.nombre">
+                {{item.nombre}}
+              </mat-option>
+            </mat-autocomplete>
+      
         </div>
 
         <div class="mb-3">
