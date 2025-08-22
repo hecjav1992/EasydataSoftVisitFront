@@ -31,7 +31,7 @@ export class AppMovilComponent implements OnInit {
 
 
   constructor(
-    private router: Router,
+    private routes: Router,
     private itemservice: ItemService,
     private pedidoservice: PedidoService
   ) { }
@@ -116,12 +116,19 @@ export class AppMovilComponent implements OnInit {
   }
 
   validarProducto() {
-    console.log("sgd")
+    if (!this.options.some(option => option.nombre === this.item)) {
+      this.item = [];
+    } 
   }
+
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.nombre.toLowerCase().includes(filterValue));
+  }
+
+  cerrarApp() {
+    this.routes.navigate(['/']);
   }
 
   selectedValue: string = '';

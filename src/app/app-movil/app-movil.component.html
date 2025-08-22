@@ -29,10 +29,9 @@
 
         <div class="mb-3">
           <label for="producto" class="form-label">Producto:</label>
-      
-            <input type="text" class="form-control" (blur)="validarProducto()"  matInput [formControl]="myControl" [matAutocomplete]="auto" required>
-            <mat-autocomplete id="matAutocomplete" #auto="matAutocomplete">
-              <mat-option id="mat" *ngFor="let item of filteredOptions | async" [value]="item.nombre">
+            <input type="text" [(ngModel)]="item" class="form-control" (blur)="validarProducto()"  matInput [formControl]="myControl" [matAutocomplete]="auto" required>
+            <mat-autocomplete id="matAutocomplete" #auto="matAutocomplete" >
+              <mat-option id="mat" *ngFor="let item of filteredOptions | async" [value]="item.nombre" (mousedown)=$event.preventDefault() >
                 {{item.nombre}}
               </mat-option>
             </mat-autocomplete>
@@ -59,9 +58,9 @@
         </div>
 
         <div class="d-grid d-md-flex justify-content-md-between gap-2">
-          <button type="submit" class="btn btn-success">Enviar Pedido</button>
-          <button type="button" class="btn btn-primary" (click)=verificarPedidos()>Consultar Pedido</button>
-          <button type="button" class="btn btn-danger" id="cancelarBtn">Salir</button>
+          <button type="submit" class="btn btn-success col col-sm-4">Enviar Pedido</button>
+          <button type="button" class="btn btn-primary col col-sm-4" (click)=verificarPedidos()>Consultar Pedido</button>
+          <button type="button" class="btn btn-danger col col-sm-4" (click)="cerrarApp()" id="cancelarBtn">Salir</button>
         </div>
       </form>
     </div>
