@@ -1,9 +1,14 @@
-import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
-import { Loader } from '@googlemaps/js-api-loader';
-import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
-import { environment } from '../../environment/environment';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { LoadMapService } from '../service/load-map.service';
-import { PedidoService } from '../service/pedido.service';
+
+interface Pedido {
+  id_pedido: number;
+  usuario: string;
+  fecha_pedido: string;
+  latitud: number;
+  longitud: number;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -11,42 +16,54 @@ import { PedidoService } from '../service/pedido.service';
   styleUrls: ['./dashboard-component.component.css'],
   standalone: false
 })
-
-
 export class DashboardComponentComponent implements OnInit {
 
   @ViewChild(MapInfoWindow, { static: false }) infoWindow?: MapInfoWindow;
+
   valores: any[] = [];
-  valores2: any[] = [];
-  infoContent: any = '';
+  infoContent: string = '';
   distancia: any;
   velociada: any;
-  constructor(
-    private mark: LoadMapService
-  ) { }
-  ngOnInit(): void {
-    this.mark.getItems2().subscribe((Response: any) => {
-      this.valores = Response;
-      this.distancia = Response.distancia;
-      this.velociada = Response.duracion;
-      console.log(this.valores)
-    });
-    this.mark.getUbicacion().subscribe((Response: any) => {
-      this.valores2 = Response;
-      console.log(this.valores2)
 
-    });
+  ubicacion: Pedido[] = [];
+  markerPositions: google.maps.LatLngLiteral[] = [];
 
-  }
   center: google.maps.LatLngLiteral = { lat: 8.537981, lng: -80.782127 };
   zoom = 6;
-  markerPositions: google.maps.LatLngLiteral[] = [{ lat: 8.4460, lng: -79.9090 }, { lat: 8.88028, lng: -79.7833 }];
+
+  constructor(
+    private mark: LoadMapService,
+    private mark2: LoadMapService
+  ) { }
+
+  ngOnInit(): void {
+    this.mark.getItems2().subscribe((response: any[]) => {
+      this.valores = response;
+      if (response.length > 0) {
+        this.distancia = response[0].distancia;
+        this.velociada = response[0].duracion;
+      }
+      console.log('Valores:', this.valores);
+    });
+    this.mark2.getUbicacion().subscribe((response: Pedido[]) => {
+      if (response && response.length > 0) {
+        this.ubicacion = response;
+        this.markerPositions = this.ubicacion.map(pedido => ({
+          lat: pedido.latitud,
+          lng: pedido.longitud
+        }));
+
+        console.log('Ubicaciones:', this.ubicacion);
+        console.log('Marcadores:', this.markerPositions);
+      } else {
+        console.log('No hay pedidos disponibles');
+      }
+    });
+  }
 
   openInfoWindow(marker: MapMarker, position: any) {
-    this.infoContent = "la distacia recorrida" + this.distancia + " " + this.velociada;
+    this.infoContent = `La distancia recorrida: ${this.distancia}, Duración: ${this.velociada}`;
     this.infoWindow!.open(marker);
   }
 
-
 }
-
