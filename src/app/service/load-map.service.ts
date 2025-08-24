@@ -7,9 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class LoadMapService {
   private apiUrl = 'https://easydatasoftvisitback.onrender.com/api/Distance?origins=8.756958,-79.865128&destinations=9.3599,-79.9014&departure_time=now&mode=driving';;
-  
+  private apiUbicacion = 'https://easydatasoftvisitback.onrender.com/api/Pedidos';
   constructor(private http: HttpClient) { }
   getItems2(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
+  }
+
+  getUbicacion(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUbicacion);
   }
 }

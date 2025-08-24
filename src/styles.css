@@ -27,5 +27,17 @@ app-root {
     background:#ffffff;
 }
 
+.buscador {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+  .buscador input, .buscador select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+
 
 

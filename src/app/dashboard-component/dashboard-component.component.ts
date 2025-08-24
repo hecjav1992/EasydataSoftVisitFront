@@ -3,6 +3,7 @@ import { Loader } from '@googlemaps/js-api-loader';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { environment } from '../../environment/environment';
 import { LoadMapService } from '../service/load-map.service';
+import { PedidoService } from '../service/pedido.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,11 +17,12 @@ export class DashboardComponentComponent implements OnInit {
 
   @ViewChild(MapInfoWindow, { static: false }) infoWindow?: MapInfoWindow;
   valores: any[] = [];
+  valores2: any[] = [];
   infoContent: any = '';
   distancia: any;
   velociada: any;
   constructor(
-    private mark: LoadMapService,
+    private mark: LoadMapService
   ) { }
   ngOnInit(): void {
     this.mark.getItems2().subscribe((Response: any) => {
@@ -28,6 +30,11 @@ export class DashboardComponentComponent implements OnInit {
       this.distancia = Response.distancia;
       this.velociada = Response.duracion;
       console.log(this.valores)
+    });
+    this.mark.getUbicacion().subscribe((Response: any) => {
+      this.valores2 = Response;
+      console.log(this.valores2)
+
     });
 
   }
