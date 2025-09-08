@@ -43,7 +43,6 @@ export class DashboardComponentComponent implements OnInit {
         this.distancia = response[0].distancia;
         this.velociada = response[0].duracion;
       }
-      console.log('Valores:', this.valores);
     });
     this.mark2.getUbicacion().subscribe((response: Pedido[]) => {
       if (response && response.length > 0) {
@@ -52,9 +51,6 @@ export class DashboardComponentComponent implements OnInit {
           lat: pedido.latitud,
           lng: pedido.longitud
         }));
-
-        console.log('Ubicaciones:', this.ubicacion);
-        console.log('Marcadores:', this.markerPositions);
       } else {
         console.log('No hay pedidos disponibles');
       }
