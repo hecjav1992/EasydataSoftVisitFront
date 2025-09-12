@@ -13,13 +13,15 @@ import { AppMovilComponent } from './app-movil/app-movil.component';
 import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { VentasComponent } from './ventas/ventas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponentComponent,
-    AppMovilComponent
+    AppMovilComponent,
+    VentasComponent
   ],
   imports: [
     BrowserModule,

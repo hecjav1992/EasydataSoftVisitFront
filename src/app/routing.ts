@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { PanelComponent } from './panel/panel.component';
 import { AppMovilComponent } from './app-movil/app-movil.component';
 import { DashboardComponentComponent } from './dashboard-component/dashboard-component.component';
+import { VentasComponent } from './ventas/ventas.component';
 
 
 const appRoutes: Routes = [
@@ -15,6 +16,8 @@ const appRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponentComponent },
+      { path: 'ventas', component: VentasComponent }
+
     ]
 
   },

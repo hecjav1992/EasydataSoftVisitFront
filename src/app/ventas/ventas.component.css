@@ -1,0 +1,61 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 15px;
+  padding: 15px;
+}
+
+.card {
+  background: #012a4a;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+  .card h3 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+    color: #ffd700;
+  }
+
+.ventas {
+  grid-column: span 1;
+}
+
+.ganancia {
+  grid-column: span 1;
+}
+
+.ganancia-pct {
+  grid-column: span 1;
+}
+
+.producto-top {
+  grid-column: span 1;
+}
+
+.evolucion-mensual {
+  grid-column: span 2;
+}
+
+.producto {
+  grid-column: span 1;
+}
+
+.tipo-venta {
+  grid-column: span 1;
+}
+
+.evolucion-diaria {
+  grid-column: span 2;
+}
+
+.tipo-pago {
+  grid-column: span 1;
+}
+
+.categoria {
+  grid-column: span 1;
+}
+
